@@ -2,10 +2,7 @@ class card {
   String m_name;
   String m_suit;
 
-  card(String Name, String Suit) {
-    this.m_name = Name;
-    this.m_suit = Suit;
-  }
+  card(this.m_name, this.m_suit);
 
   printcard() {
     print("$m_name of $m_suit" + "s");
@@ -52,7 +49,7 @@ class deck extends card {
     }
     assert(mydeck.length == 52);
     mydeck.shuffle();
-    mydeck.shuffle();
+    mydeck.shuffle(); //extra shuffle for "better" randomness
   }
 }
 
