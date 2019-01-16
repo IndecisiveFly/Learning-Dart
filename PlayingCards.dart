@@ -11,20 +11,10 @@ class card {
 
 class deck extends card {
   List<card> mydeck = [];
+  int position = 0;
 
+  //create the deck and shuffle
   deck() : super('', '') {
-    Shuffle();
-  }
-
-  Draw() {
-    if (mydeck.isNotEmpty)
-      mydeck.removeLast().printcard();
-    else
-      print("out of cards");
-  }
-
-  Shuffle() {
-    mydeck.clear();
     String temp_suit;
     String temp_name;
     for (int j = 0; j < 4; j++) {
@@ -49,7 +39,25 @@ class deck extends card {
     }
     assert(mydeck.length == 52);
     mydeck.shuffle();
-    mydeck.shuffle(); //extra shuffle for "better" randomness
+    mydeck.shuffle(); //extra shuffle for "more" randomness
+  }
+
+  Draw() {
+    if (position < 52) {
+      mydeck[position].printcard();
+      position++;
+    } else
+      print("out of cards");
+  }
+
+  Shuffle() {
+    position = 0;
+    mydeck.shuffle();
+  }
+  
+  //Skip forward one card
+  Burn() {
+    position++;
   }
 }
 
